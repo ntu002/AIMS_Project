@@ -1,3 +1,7 @@
+package hust.soict.dsai.aims;
+
+import hust.soict.dsai.aims.cart.Cart;
+import hust.soict.dsai.aims.disc.DigitalVideoDisc;
 
 public class Aims {
     public static void main(String[] args) {
@@ -35,7 +39,7 @@ public class Aims {
                 1000.55f
         );
 
-        DigitalVideoDisc [] dvdList = {dvd1, dvd2, dvd3, dvd4};
+        DigitalVideoDisc[] dvdList = {dvd1, dvd2, dvd3, dvd4};
 
 //        anOrder.addDigitalVideoDisc(dvd1);
 //        anOrder.addDigitalVideoDisc(dvd2);

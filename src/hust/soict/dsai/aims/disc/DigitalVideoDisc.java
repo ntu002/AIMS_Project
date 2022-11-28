@@ -1,3 +1,4 @@
+package hust.soict.dsai.aims.disc;
 
 public class DigitalVideoDisc {
     private static int nbDigitalVideoDisc = 0;
@@ -85,13 +86,17 @@ public class DigitalVideoDisc {
     public void setCost(float cost) {
         this.cost = cost;
     }
-    public void PrintInfo(){
-        System.out.print("DVD ");
-        System.out.print("- ["+ this.title +"] ");
-        if(this.category != null)System.out.print("- ["+ this.category +"] ");
-        if(this.director != null)System.out.print("- ["+ this.director +"] ");
-        if(this.length != 0)System.out.print("- ["+ this.length +"] ");
-        if(this.cost != 0)System.out.print(": ["+ this.cost +"] $");
+    public String toString() {
+        return this.id + ". DVD - " + this.getTitle() + " - " + this.getCategory() + " - " + this.getDirector() + " - " + this.getLength() + ": " + this.getCost() + "$";
+    }
 
+    public boolean isMatch(String title) {
+        if (this.title.equals(title)) return true;
+        return false;
+    }
+
+    public boolean isMatch(int id) {
+        if  (this.id == id) return true;
+        return false;
     }
 }

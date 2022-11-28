@@ -1,3 +1,8 @@
+package hust.soict.dsai.test.cart;
+
+import hust.soict.dsai.aims.cart.Cart;
+import hust.soict.dsai.aims.disc.DigitalVideoDisc;
+
 public class CartTest {
     public static void main(String args[]){
         //Create a new cart
@@ -12,7 +17,13 @@ public class CartTest {
 
         DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin",
                 "Animation", 18.99f);
+
+        anOdered.addDigitalVideoDisc(dvd1);
+        anOdered.addDigitalVideoDisc(dvd2);
         anOdered.addDigitalVideoDisc(dvd3);
-        anOdered.info();
+
+        anOdered.printCart();
+
+
     }
 }

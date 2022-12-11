@@ -2,122 +2,53 @@ package hust.soict.dsai.aims.media;
 
 import java.util.ArrayList;
 import java.util.List;
-import hust.soict.dsai.aims.media.Media;
 
 public class Book extends Media {
+    private static int nbBooks = 0;
+    private List<String> authors = new ArrayList<>();
+
     public Book(){
-        super();
+        this.id = ++nbBooks;
     }
 
-    private List<String> author = new ArrayList<String>();
-
-    public Book(String title, String category, float cost, List<String> author) {
+    public Book(String title, String category, float cost){
         super(title, category, cost);
-        for (String authorName: author) {
-            this.author.add(authorName);
-        }
+        this.id = ++nbBooks;
     }
 
-    public void addAuthor(String authorName) {
-        if (this.author.isEmpty()) {
-            System.out.println("Them thanh cong");
-            this.author.add(authorName);
-        }
-         if (this.author.contains(authorName)) {
-             System.out.println("Tac gia da co trong danh sach");
-         } else {
-             System.out.println("Them thanh cong");
-             this.author.add(authorName);
-         }
+    public List<String> getAuthors() {
+        return authors;
     }
 
-    public void removeAuthor(String authorName) {
-        if (this.author.isEmpty()) {
-            System.out.println("Chua co tac gia nao trong danh sach");
-        }
+    public void setAuthors(List<String> authors) {
+        this.authors = authors;
+    }
 
-        if (this.author.contains(authorName)) {
-            System.out.println("Xoa ten tac gia thanh cong");
-            this.author.remove(authorName);
+    public void addAuthor(String authorName){
+        if (this.authors.contains(authorName)){
+            System.out.println("This author is already in");
+            return;
+        }
+        this.authors.add(authorName);
+        System.out.println("Added author successfully");
+    }
+
+    public void removeAuthor(String authorName){
+        if (this.authors.contains(authorName)){
+            System.out.println("Removed author successfully");
+            this.authors.remove(authorName);
         } else {
-            System.out.println("Khong co ten tac gia trong sach.");
+            System.out.println("The author is not present");
         }
     }
 
-
-
-//    public int getId() {
-//        return id;
-//    }
-//    public void setId(int id) {
-//        this.id = id;
-//    }
-//
-//
-//    public String getTitle() {
-//        return title;
-//    }
-//    public void setTitle(String title) {
-//        this.title = title;
-//    }
-//
-//    public String getCategory() {
-//        return category;
-//    }
-//    public void setCategory(String category) {
-//        this.category = category;
-//    }
-//
-//    public float getCost() {
-//        return cost;
-//    }
-//    public void setCost(float cost) {
-//        this.cost = cost;
-//    }
-//
-//
-//    private static int nbBook = 0;
-//    private int id;
-//    private String title;
-//    private String category;
-//    private float cost;
-//    private List<String> author = new ArrayList<String>();
-//
-//    public Book(String title, String category, float cost, List<String> author) {
-//        this.id = nbBook;
-//        this.title = title;
-//        this.category = category;
-//        this.cost = cost;
-//        for (String authorName: author) {
-//            this.author.add(authorName);
-//        }
-//        nbBook++;
-//    }
-//
-//    public void addAuthor(String authorName) {
-//        if (this.author.isEmpty()) {
-//            System.out.println("Them thanh cong");
-//            this.author.add(authorName);
-//        }
-//         if (this.author.contains(authorName)) {
-//             System.out.println("Tac gia da co trong danh sach");
-//         } else {
-//             System.out.println("Them thanh cong");
-//             this.author.add(authorName);
-//         }
-//    }
-//
-//    public void removeAuthor(String authorName) {
-//        if (this.author.isEmpty()) {
-//            System.out.println("Chua co tac gia nao trong danh sach");
-//        }
-//
-//        if (this.author.contains(authorName)) {
-//            System.out.println("Xoa ten tac gia thanh cong");
-//            this.author.remove(authorName);
-//        } else {
-//            System.out.println("Khong co ten tac gia trong sach.");
-//        }
-//    }
-
+    @Override
+    public String toString() {
+        return "Book{" +
+                "authors=" + authors +
+                ", title='" + title + '\'' +
+                ", category='" + category + '\'' +
+                ", cost=" + cost +
+                '}';
+    }
 }

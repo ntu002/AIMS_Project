@@ -2,8 +2,11 @@ package hust.soict.dsai.aims.media;
 
 import java.lang.Object;
 
-public class Media {
-    private static int nbMedia = 0;
+public abstract class Media {
+    protected int id;
+    protected String title;
+    protected String category;
+    protected float cost;
 
     public int getId() {
         return id;
@@ -37,31 +40,36 @@ public class Media {
         this.cost = cost;
     }
 
-    private int id;
-    private String title;
-    private String category;
-    private float cost;
+    @Override
+    public String toString() {
+        return "Media{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", category='" + category + '\'' +
+                ", cost=" + cost +
+                '}';
+    }
 
     public Media(){
-
     }
 
-    public Media(String title) {
-        this.id = nbMedia;
-        this.title = title;
-        nbMedia++;
-    }
-
-
-    public Media(String title, String category, float cost) {
-        this.id = nbMedia;
+    public Media(String title, String category, float cost){
         this.title = title;
         this.category = category;
         this.cost = cost;
-        nbMedia++;
     }
 
-    public static void main (String[] args) {
-
+    public boolean isMatch(String title) {
+        return this.title.equals(title);
     }
+
+    public boolean isMatch(int id) {
+        return (this.id == id);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return this.title.equals(((Media)obj).getTitle());
+    }
+
 }

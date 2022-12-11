@@ -1,11 +1,21 @@
 package hust.soict.dsai.aims.media;
 
-public class Disc {
+public class Disc  extends Media {
 
-    public Disc() {}
+    protected String diretor;
+    protected int length;
 
-    private String diretor;
-    private int length;
+    public int getLength(){
+        return length;
+    }
+    public String getDiretor(){
+        return diretor;
+    }
+
+    public Disc(){
+
+    }
+
 
     public Disc(int length) {
         this.length = length;
@@ -15,7 +25,7 @@ public class Disc {
         this.diretor = diretor;
     }
 
-    public Disc(String diretor, int length) {
+    public Disc(int length, String diretor) {
         this.diretor = diretor;
         this.length = length;
     }

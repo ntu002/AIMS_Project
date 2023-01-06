@@ -1,4 +1,4 @@
-package hust.soict.globalict.swing;
+package hust.soict.dsai.swing;
 
 import javax.swing.*;
 import java.awt.*;

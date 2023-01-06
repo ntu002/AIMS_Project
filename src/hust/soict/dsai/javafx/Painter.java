@@ -1,4 +1,4 @@
-package hust.soict.globalict.javafx;
+package hust.soict.dsai.javafx;
 
 //import javafx.application.Application;
 //import javafx.fxml.FXMLLoader;
@@ -36,7 +36,7 @@ import javafx.stage.Stage;
 public class Painter extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/hust/soict/globalict/javafx/Painter.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/hust/soict/dsai/javafx/Painter.fxml"));
 
         Scene scene = new Scene(root);
         stage.setTitle("Painter");

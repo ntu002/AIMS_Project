@@ -5,11 +5,23 @@ import hust.soict.dsai.aims.media.Media;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 public class Store {
-    private List<Media> itemsInStore = new ArrayList<>();
+    //private List<Media> itemsInStore = new ArrayList<>();
+    private ObservableList<Media> itemsInStore = FXCollections.observableArrayList();
 
     public Store() {
 
+    }
+
+    public ObservableList<Media> getItemsInStore() {
+        return this.itemsInStore;
+    }
+
+    public boolean contains(Media media){
+        return this.itemsInStore.contains(media);
     }
 
     public void addMedia(Media media) {

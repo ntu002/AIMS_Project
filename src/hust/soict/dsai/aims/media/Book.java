@@ -16,6 +16,14 @@ public class Book extends Media {
         this.id = ++nbBooks;
     }
 
+    public Book(String title, String category, float cost, String ...authors) {
+        super(title, category, cost);
+        this.id = ++nbBooks;
+        for (String authorName: authors) {
+            this.addAuthor(authorName);
+        }
+    }
+
     public List<String> getAuthors() {
         return authors;
     }

@@ -1,16 +1,22 @@
 package hust.soict.dsai.aims.cart;
 
 import hust.soict.dsai.aims.media.Media;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 
 import java.util.*;
 
 public class Cart {
     public static final int MAX_NUMBERS_ORDERED = 20;
-    private List<Media> itemsOrdered = new ArrayList<>();
-
+    private ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
 
     public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitleCost();
     public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaComparatorByCostTitle();
+
+    public ObservableList<Media> getItemsOrdered() {
+        return itemsOrdered;
+    }
 
     public void addMedia(Media media){
         if (this.itemsOrdered.size() >= MAX_NUMBERS_ORDERED){
@@ -67,43 +73,18 @@ public class Cart {
         System.out.println("***************************************************");
     }
 
-    public void searchCart(int id) {
-        List<Media> result = new ArrayList<>();
+    public FilteredList<Media> searchCart(int id) {
 
-        for (Media media : this.itemsOrdered) {
-            if (media.isMatch(id)) {
-                result.add(media);
-            }
-        }
-        if (result.size() > 0) {
-            System.out.println("Search results:");
-            for (Media media : result) {
-                System.out.println(media.toString());
-            }
-            System.out.println();
-        } else {
-            System.out.println("Item not found.");
-        }
+        FilteredList<Media> result = new FilteredList<>(this.itemsOrdered, media -> {return media.isMatch(id);});
+        return result;
     }
 
-    public void searchCart(String title) {
-        List<Media> result = new ArrayList<>();
+    public FilteredList<Media> searchCart(String title) {
+        FilteredList<Media> result = new FilteredList<>(this.itemsOrdered, media -> {return media.isMatch(title);});
 
-        for (Media media : this.itemsOrdered) {
-            if (media.isMatch(title)) {
-                result.add(media);
-            }
-        }
-        if (result.size() > 0) {
-            System.out.println("Search results:");
-            for (Media media: result) {
-                System.out.println(media.toString());
-            }
-            System.out.println();
-        } else {
-            System.out.println("Item not found.");
-        }
+        return result;
     }
+
 
     public void sortByTitleCost() {
         Collections.sort(this.itemsOrdered, COMPARE_BY_TITLE_COST);

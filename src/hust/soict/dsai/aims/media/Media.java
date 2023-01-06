@@ -69,7 +69,16 @@ public abstract class Media {
 
     @Override
     public boolean equals(Object obj) {
-        return this.title.equals(((Media)obj).getTitle());
+        if (obj instanceof Media)
+            try {
+                String title = ((Media) obj).getTitle();
+                if (this.isMatch(title))
+                    return true;
+            } catch (NullPointerException e){
+                e.printStackTrace();
+            } catch (ClassCastException e){
+                e.printStackTrace();
+            }
+        return false;
     }
-
 }

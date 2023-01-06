@@ -6,8 +6,12 @@ import hust.soict.dsai.aims.media.Book;
 import hust.soict.dsai.aims.media.CompactDisc;
 import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.store.Store;
+import hust.soict.dsai.aims.exception.PlayerException;
 
 import java.util.Scanner;
+import javax.swing.*;
+import java.util.List;
+
 
 public class Aims {
 
@@ -105,10 +109,14 @@ public class Aims {
                 if (foundMedia != null){
                     if (foundMedia instanceof CompactDisc){
                         CompactDisc cd = (CompactDisc) foundMedia;
-                        cd.play();
+                        try{cd.play();}catch (PlayerException e){
+                            e.printStackTrace();
+                        }
                     } else if (foundMedia instanceof DigitalVideoDisc){
                         DigitalVideoDisc dvd = (DigitalVideoDisc) foundMedia;
-                        dvd.play();
+                        try{dvd.play();}catch (PlayerException e){
+                            e.printStackTrace();
+                        }
                     }
                 } else {
                     System.out.println("Media not found");
@@ -137,10 +145,10 @@ public class Aims {
             } else if(command == 2) {
                 if (media instanceof CompactDisc){
                     CompactDisc cd = (CompactDisc) media;
-                    cd.play();
+                    try{cd.play();}catch (PlayerException e){e.printStackTrace();}
                 } else if (media instanceof DigitalVideoDisc){
                     DigitalVideoDisc dvd = (DigitalVideoDisc) media;
-                    dvd.play();
+                    try{dvd.play();}catch (PlayerException e){e.printStackTrace();}
                 }
             }
         }
@@ -199,10 +207,10 @@ public class Aims {
                 if (foundMedia != null){
                     if (foundMedia instanceof CompactDisc){
                         CompactDisc cd = (CompactDisc) foundMedia;
-                        cd.play();
+                        try{cd.play();}catch (PlayerException e){e.printStackTrace();}
                     } else if (foundMedia instanceof DigitalVideoDisc){
                         DigitalVideoDisc dvd = (DigitalVideoDisc) foundMedia;
-                        dvd.play();
+                        try{dvd.play();}catch (PlayerException e){e.printStackTrace();}
                     }
                 } else {
                     System.out.println("Media not found");
@@ -240,13 +248,40 @@ public class Aims {
                 14.95f
         );
         CompactDisc cd = new CompactDisc(
-                "Vo Tac Thien",
-                50,
-                "Loc",
-                "Loc"
+                "Com nha noi chung la em",
+                "Nhuoc Lac",
+                "Quen goi"
         );
-        store.addMedia(dvd1, dvd2, dvd3, book, cd);
+        CompactDisc cd2 = new CompactDisc(
+                "cd2 nha",
+                "cung la cd2",
+                "laf cd2 nma artist"
+        );
+        CompactDisc cd3 = new CompactDisc(
+                "cd3 nha",
+                "cung la cd3",
+                "la cd3 nha"
+        );
+        DigitalVideoDisc dvd4 = new DigitalVideoDisc(
+                "Avatar",
+                "Sci-fi",
+                "James Cameroon",
+                112,
+                20f
+        );
+        DigitalVideoDisc dvd5 = new DigitalVideoDisc(
+                "Avatar 2",
+                "Sci-fi",
+                30f,
+                "James Cameroon"
+        );
 
-        showMenu();
+        DigitalVideoDisc dvd6 = new DigitalVideoDisc(
+                "Avatar 3",
+                "sci-fi",
+                40f,
+                "James Cameroon"
+        );
+        store.addMedia(dvd1, dvd2, dvd3, book, cd, cd2, cd3, dvd4);
     }
 }
